@@ -1,0 +1,4 @@
+ID,ProductoID,ImagenURL,Cantidad,ClienteID,Fecha
+1,1,https://rickandmortyapi.com/api/character/avatar/1.jpeg,2,123,31/12/2023 23:59:59
+2,15,https://rickandmortyapi.com/api/character/avatar/15.jpeg,2,122433,31/12/2023 23:59:59
+3,13,https://rickandmortyapi.com/api/character/avatar/13.jpeg,45,1234567,20/6/2024 02:22:51
