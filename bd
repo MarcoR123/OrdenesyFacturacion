@@ -1,0 +1,72 @@
+-- Crear la base de datos
+CREATE DATABASE InventoryBillingDB;
+GO
+
+-- Usar la base de datos creada
+USE InventoryBillingDB;
+GO
+
+-- Crear la tabla Productos (Inventario)
+CREATE TABLE Productos (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(255) NOT NULL,
+    Stock INT NOT NULL,
+    Precio DECIMAL(18, 2) NOT NULL
+);
+GO
+
+-- Crear la tabla OrdenesDeCompra y relacionarla con Productos
+CREATE TABLE OrdenesDeCompra (
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    ProductoID INT NOT NULL,
+    ImagenURL NVARCHAR(255),
+    Cantidad INT NOT NULL,
+    ClienteID INT NOT NULL,
+    Fecha DATETIME NOT NULL
+);
+GO
+
+-- Crear la tabla Facturas y relacionarla con OrdenesDeCompra y Productos
+CREATE TABLE Facturas (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    OrdenCompraID INT NOT NULL,
+    ClienteID INT NOT NULL,
+    ProductoID INT NOT NULL,
+    ProductoNombre NVARCHAR(255) NOT NULL,
+    Cantidad INT NOT NULL,
+    Precio DECIMAL(18, 2) NOT NULL,
+    Fecha DATETIME NOT NULL,
+    FOREIGN KEY (OrdenCompraID) REFERENCES OrdenesDeCompra(ID),
+    FOREIGN KEY (ProductoID) REFERENCES Productos(Id)
+);
+GO
+
+
+-- Insertar productos en la tabla Productos basados en la API de Rick and Morty
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Rick Sanchez', 100, 50.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Morty Smith', 120, 30.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Summer Smith', 110, 25.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Beth Smith', 90, 45.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Jerry Smith', 80, 15.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Abadango Cluster Princess', 60, 35.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Abradolf Lincler', 95, 40.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Adjudicator Rick', 70, 55.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Agency Director', 456, 20.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Alan Rails', 234, 65.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Albert Einstein', 345, 75.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Alexander', 450, 15.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Alien Googah', 240, 50.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Alien Morty', 130, 55.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Alien Rick', 110, 60.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Amish Cyborg', 80, 70.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Annie', 130, 45.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Antenna Morty', 100, 25.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Antenna Rick', 120, 35.00);
+INSERT INTO Productos (Nombre, Stock, Precio) VALUES ('Ants in my Eyes Johnson', 140, 5.00);
+GO
+
+
+
+
+
+
